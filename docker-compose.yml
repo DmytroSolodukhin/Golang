@@ -1,0 +1,31 @@
+version: '3'
+services:
+  client-api:
+    build:
+      context: ./clientApi
+      dockerfile: ./Dockerfile
+    ports:
+      - 9090:9090
+    links:
+      - server-api
+  server-api:
+    container_name: "port_domain_service"
+    build:
+      context: ./serverApi
+      dockerfile: ./Dockerfile
+    ports:
+      - 50051:50051
+    links:
+      - mongo
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:latest
+    container_name: "mongo"
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    volumes:
+      - ./data/db:/data/db
+    ports:
+      - 27017:27017
