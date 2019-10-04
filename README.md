@@ -15,12 +15,10 @@ The services are written in the golang programming language and use the official
 
 2. Run `$ docker-compose up --build` 
 
-3. Open `localhost:9090` in your brouser.
+3. You can post file to localhost:9090
 
 ### Testing
 
 1. Need to install GoConvey `$ go get github.com/smartystreets/goconvey`
 
-2. Start to test ClientApi part `go test -v ./clientApi/test/ `
 
-3. Start to test PortDomainServer part `go test -v ./serverApi/test/ `

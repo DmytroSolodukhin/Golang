@@ -11,10 +11,14 @@ github.com/golang/protobuf v1.3.2/go.mod h1:6lQm79b+lXiMfvg/cZm0SGofjICqVBUtrP5y
 github.com/google/go-cmp v0.2.0/go.mod h1:oXzfMopK8JAjlY9xF4vHSVASa0yLyX7SntLO5aqRK0M=
 github.com/kazak/data v0.0.0-20191003185039-cda1204fd143 h1:qllKlBdaY3N7xYcyswN58IVDC3IhunhYek3HIs4B3ks=
 github.com/kazak/data v0.0.0-20191003185039-cda1204fd143/go.mod h1:52B59kFO+tLEKuZ0akeHYpsd/ZDRTdgxHJLCDzP312E=
+github.com/kazak/data v0.0.0-20191003185333-c6855f8b6550 h1:qXONnyS788k/Y/20AzJSFsa6q9gjFc9AWolviIhOQLw=
+github.com/kazak/data v0.0.0-20191003185333-c6855f8b6550/go.mod h1:urZBfz/70KsYhKw7EAbo2pOot/ter6Rqtcm2awwV+x8=
 github.com/kazak/grpcapi v0.0.0-20191003163415-68f555f67ac5 h1:oHdJFNVLiIbgYq4d7ad2wnwBALVM5zFD8zxiBN/qLOo=
 github.com/kazak/grpcapi v0.0.0-20191003163415-68f555f67ac5/go.mod h1:dyKt5Re+8foW2HfugLS3jsfgQheb3SX5urkFJFbKcTg=
 github.com/kazak/grpcapi v0.0.0-20191003171234-e3efd7707186 h1:lWeR+LxW4M6hSDBiyGuBDQHLbdv99PdSn8bYDoGk8XU=
 github.com/kazak/grpcapi v0.0.0-20191003171234-e3efd7707186/go.mod h1:+mGKWUWPRb1Q0DxQ7OeOOZy3nXPbJzZIQRQnGCkX8yk=
+github.com/kazak/grpcapi v0.0.0-20191003214048-3b8475c5ad50 h1:kjtXsFlHFQCUNg52F/S8aWUABX0CIbiw1P7kQgp9yTQ=
+github.com/kazak/grpcapi v0.0.0-20191003214048-3b8475c5ad50/go.mod h1:+mGKWUWPRb1Q0DxQ7OeOOZy3nXPbJzZIQRQnGCkX8yk=
 github.com/kazak/restapi v0.0.0-20191003185923-72dec1a4c126 h1:EN802eWwMbV8u3yamKWXp7eC2gLWMRoh6JwfzZkohDM=
 github.com/kazak/restapi v0.0.0-20191003185923-72dec1a4c126/go.mod h1:Kiw6eWYo4YuRnGJ8Azocs5GETs0gcBStXCb6BRxyNm8=
 github.com/kazak/restapi v1.0.1 h1:yxSTKmmHr4RtiXpHMusPVSYXpKQ+HfXfnQ9ATZ9i1xA=
@@ -40,6 +44,8 @@ golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a h1:1BGLXjeY4akVXGgbC9HugT3Jv
 golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
 golang.org/x/sys v0.0.0-20191002091554-b397fe3ad8ed h1:5TJcLJn2a55mJjzYk0yOoqN8X1OdvBDUnaZaKKyQtkY=
 golang.org/x/sys v0.0.0-20191002091554-b397fe3ad8ed/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+golang.org/x/sys v0.0.0-20191003212358-c178f38b412c h1:6Zx7DRlKXf79yfxuQ/7GqV3w2y7aDsk6bGg0MzF5RVU=
+golang.org/x/sys v0.0.0-20191003212358-c178f38b412c/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/text v0.3.0 h1:g61tztE5qeGQ89tm6NTjjM9VPIm088od1l6aSorWRWg=
 golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
 golang.org/x/text v0.3.2 h1:tW2bmiBqwgJj/UpqtC8EpXEZVYOwU0yG4iWbprSVAcs=
