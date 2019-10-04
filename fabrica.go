@@ -1,10 +1,10 @@
 package data
 
 import (
-	api "github.com/kazak/grpcapi"
 	"bufio"
 	"bytes"
 	"encoding/json"
+	api "github.com/kazak/grpcapi"
 	"strings"
 )
 
@@ -29,7 +29,7 @@ func ScanRequestBodyToChank(scanner *bufio.Scanner, chank chan<- string) {
 
 //StartProdactionPort create Port object
 func StartProdactionPort(chText <-chan string, chPort chan<- *api.Port) {
-	var startReadBody bool = false
+	var startReadBody = false
 	var str []byte
 
 	for {
@@ -45,7 +45,7 @@ func StartProdactionPort(chText <-chan string, chPort chan<- *api.Port) {
 
 		if startReadBody {
 			str = append(str, textPart...)
-			if (len(str) < separateLengthText) { // we can think about separate port object better
+			if len(str) < separateLengthText { // we can think about separate port object better
 				continue
 			}
 
@@ -60,7 +60,7 @@ func StartProdactionPort(chText <-chan string, chPort chan<- *api.Port) {
 				var newPorts map[string]*api.Port
 				err := json.Unmarshal(checkJSON, &newPorts)
 
-				if (err == nil) {
+				if err == nil {
 					for key, port := range newPorts {
 						port.PortId = key
 						chPort <- port
