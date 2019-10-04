@@ -58,9 +58,9 @@ func StartProdactionPort(chText <-chan string, chPort chan<- *api.Port) {
 
 			if bytes.Equal(checkJSON[len(str)-1:], []byte("}")) {
 				var newPorts map[string]*api.Port
-				error := json.Unmarshal(checkJSON, &newPorts)
+				err := json.Unmarshal(checkJSON, &newPorts)
 
-				if (error == nil) {
+				if (err == nil) {
 					for key, port := range newPorts {
 						port.PortId = key
 						chPort <- port
