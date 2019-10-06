@@ -35,10 +35,6 @@ func StartProdactionPort(chText <-chan string, chPort chan<- *api.Port) {
 	for {
 		textPart, done := <-chText
 
-		if !done {
-			close(chPort)
-			return
-		}
 		if "{" == textPart {
 			startReadBody = true
 		}
@@ -67,6 +63,10 @@ func StartProdactionPort(chText <-chan string, chPort chan<- *api.Port) {
 					}
 				}
 			}
+		}
+		if !done {
+			close(chPort)
+			return
 		}
 	}
 }
