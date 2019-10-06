@@ -15,5 +15,5 @@ const (
 func main() {
 	fmt.Println("Starting Server!")
 	repository := db.ConnectToDB(MongoDBHost, DbName)
-	grpc.StartGRPCSErver(PortTOConnect, repository)
+	grpc.StartGRPCServer(PortTOConnect, repository)
 }

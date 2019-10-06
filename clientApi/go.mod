@@ -3,7 +3,7 @@ module mod
 go 1.13
 
 require (
-	github.com/kazak/data v0.0.0-20191003185333-c6855f8b6550 // indirect
+	github.com/kazak/data v1.0.5 // indirect
 	github.com/kazak/grpcapi v0.0.0-20191003214048-3b8475c5ad50
 	github.com/kazak/restapi v1.0.1
 	golang.org/x/net v0.0.0-20191003171128-d98b1b443823 // indirect
