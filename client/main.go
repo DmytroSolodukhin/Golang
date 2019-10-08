@@ -2,7 +2,7 @@ package main
 
 import (
 	api "github.com/kazak/Golang/modules/grpcapi"
-	restapi "github.com/kazak/Golang/modules/restapi"
+	restapi "github.com/kazak/Golang/modules/rest_api"
 	"log"
 	"fmt"
 	"os"
