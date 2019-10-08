@@ -115,20 +115,6 @@ func (route *restRout) remove(res http.ResponseWriter, req *http.Request) {
 	response.output(res)
 }
 
-// Start REST Api
-func Start(selfHost string, client api.PortServiceClient) {
-	restRout := &restRout{
-		grpcClient: client,
-	}
-	rout := chi.NewRouter()
-	rout.Post("/", restRout.post)
-	rout.Get("/", restRout.getAll)
-	rout.Get("/{portID}/", restRout.getByID)
-	rout.Delete("/{portID}/", restRout.remove)
-
-	_ = http.ListenAndServe(selfHost, rout)
-}
-
 // SendPortToDomainService send port object to service.
 func (route *restRout) sendPortToDomainService(chPort <-chan *api.Port) int {
 	var quantity = 0
@@ -145,5 +131,19 @@ func (route *restRout) sendPortToDomainService(chPort <-chan *api.Port) int {
 			quantity++
 		}
 	}
+}
+
+// Start REST Api
+func Start(selfHost string, client api.PortServiceClient) {
+	restRout := &restRout{
+		grpcClient: client,
+	}
+	rout := chi.NewRouter()
+	rout.Post("/", restRout.post)
+	rout.Get("/", restRout.getAll)
+	rout.Get("/{portID}/", restRout.getByID)
+	rout.Delete("/{portID}/", restRout.remove)
+
+	_ = http.ListenAndServe(selfHost, rout)
 }
 
