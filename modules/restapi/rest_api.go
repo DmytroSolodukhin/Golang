@@ -4,9 +4,8 @@ import (
 	"bufio"
 	"context"
 	"encoding/json"
-	"fmt"
 	"github.com/go-chi/chi"
-	"github.com/kazak/Golang/modules/port_factory"
+	portFactory "github.com/kazak/Golang/modules/port_factory"
 	api "github.com/kazak/Golang/modules/grpcapi"
 	"net/http"
 )
@@ -16,7 +15,16 @@ type response struct {
 	code      int
 }
 
-var grpcClient api.PortServiceClient
+type restRoute interface {
+	getAll(res http.ResponseWriter, req *http.Request)
+	getByID(res http.ResponseWriter, req *http.Request)
+	post(res http.ResponseWriter, req *http.Request)
+	remove(res http.ResponseWriter, req *http.Request)
+}
+
+type restRout struct {
+	grpcClient api.PortServiceClient
+}
 
 func (response *response) output(res http.ResponseWriter) {
 	res.Header().Set("Content-Type", "application/json")
@@ -26,11 +34,11 @@ func (response *response) output(res http.ResponseWriter) {
 }
 
 // Getting all ports. (static limit 100)
-func getAll(res http.ResponseWriter, req *http.Request) {
+func (route *restRout) getAll(res http.ResponseWriter, req *http.Request) {
 	response := &response{
 		code: 200,
 	}
-	out, err := grpcClient.GetAll(context.Background(), &api.Request{})
+	out, err := route.grpcClient.GetAll(context.Background(), &api.Request{})
 
 	if err != nil {
 		response.code = 502
@@ -46,13 +54,13 @@ func getAll(res http.ResponseWriter, req *http.Request) {
 }
 
 // Getting port by id
-func getByID(res http.ResponseWriter, req *http.Request)  {
+func (route *restRout) getByID(res http.ResponseWriter, req *http.Request)  {
 	response := &response{
 		code: 200,
 	}
 	portID := chi.URLParam(req, "portID")
 	request := &api.Request{PortId: portID}
-	out, err := grpcClient.Get(context.Background(), request)
+	out, err := route.grpcClient.Get(context.Background(), request)
 
 	if err != nil {
 		response.code = 502
@@ -68,7 +76,7 @@ func getByID(res http.ResponseWriter, req *http.Request)  {
 }
 
 // Create and save ports
-func post(res http.ResponseWriter, req *http.Request) {
+func (route *restRout) post(res http.ResponseWriter, req *http.Request) {
 	response := &response{
 		code: 200,
 	}
@@ -80,23 +88,23 @@ func post(res http.ResponseWriter, req *http.Request) {
 		response.code = 500
 	}
 
-	go data.ScanRequestBodyToChank(scanner, chankText)
-	go data.StartProdactionPort(chankText, chankPort)
+	go portFactory.ScanRequestBodyToChank(scanner, chankText)
+	go portFactory.StartProdactionPort(chankText, chankPort)
 
-	countOfSavedPort := sendPortToDomainService(grpcClient, chankPort)
+	countOfSavedPort := route.sendPortToDomainService(chankPort)
 	response.data = string(countOfSavedPort)
 
 	response.output(res)
 }
 
 // Remove ports
-func remove(res http.ResponseWriter, req *http.Request) {
+func (route *restRout) remove(res http.ResponseWriter, req *http.Request) {
 	response := &response{
 		code: 200,
 	}
 	portID := chi.URLParam(req, "portID")
 	request := &api.Request{PortId: portID}
-	output, _ := grpcClient.Delete(context.Background(), request)
+	output, _ := route.grpcClient.Delete(context.Background(), request)
 
 	if !output.Done {
 		response.code = 402
@@ -109,21 +117,20 @@ func remove(res http.ResponseWriter, req *http.Request) {
 
 // Start REST Api
 func Start(selfHost string, client api.PortServiceClient) {
-	fmt.Println("Ssfsdfsdfsdf!")
-
-	grpcClient = client
+	restRout := &restRout{
+		grpcClient: client,
+	}
 	rout := chi.NewRouter()
-	rout.Post("/", post)
-	rout.Get("/", getAll)
-	rout.Get("/{portID}/", getByID)
-	rout.Delete("/{portID}/", remove)
-	fmt.Println("@#$@#$!")
+	rout.Post("/", restRout.post)
+	rout.Get("/", restRout.getAll)
+	rout.Get("/{portID}/", restRout.getByID)
+	rout.Delete("/{portID}/", restRout.remove)
 
 	_ = http.ListenAndServe(selfHost, rout)
 }
 
 // SendPortToDomainService send port object to service.
-func sendPortToDomainService(grpcClient api.PortServiceClient, chPort <-chan *api.Port) int {
+func (route *restRout) sendPortToDomainService(chPort <-chan *api.Port) int {
 	var quantity = 0
 	for {
 		portObject, done := <- chPort
@@ -132,7 +139,7 @@ func sendPortToDomainService(grpcClient api.PortServiceClient, chPort <-chan *ap
 			return quantity
 		}
 		request := &api.Request{Port: portObject}
-		response, _ := grpcClient.Post(context.Background(), request)
+		response, _ := route.grpcClient.Post(context.Background(), request)
 
 		if response.Done {
 			quantity++

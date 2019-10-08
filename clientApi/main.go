@@ -10,7 +10,7 @@ import (
 
 const (
 	selfHost = ":9090"
-	sendAddress = "port_domain_service:50051"
+	sendAddress = "localhost:50051"//port_domain_service
 )
 
 func main() {

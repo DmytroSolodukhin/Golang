@@ -45,7 +45,7 @@ func (s *service) Delete(ctx context.Context, req *api.Request) (*api.Response, 
 }
 
 // StartGRPCSErver - Start gRPC server
-func StartGRPCServer(PortTOConnect string, rep repository)  {
+func StartGRPCServer(PortTOConnect string, rep repository) {
 	// Start gRPC server and listen tcp
 	lis, err := net.Listen("tcp", PortTOConnect)
 	if err != nil {
