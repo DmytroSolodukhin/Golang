@@ -5,4 +5,4 @@ COPY . /go/src
 RUN export GOPATH=/go/src
 RUN set -x
 RUN go build /go/src/main.go
-ENTRYPOINT ["/go/src/main"]
+RUN SEND_ADDRESS=port_domain_service /go/src/main

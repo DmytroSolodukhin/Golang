@@ -1,6 +1,6 @@
 .idea
-clientApi/ClientAPI
-serverApi/PortDomainService
+clientApi/main
+serverApi/main
 bin
 pkg
 src
