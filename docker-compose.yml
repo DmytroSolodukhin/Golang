@@ -2,7 +2,7 @@ version: '3'
 services:
   client-api:
     build:
-      context: ./clientApi
+      context: ./client
       dockerfile: ./Dockerfile
     ports:
       - 9090:9090
@@ -11,7 +11,7 @@ services:
   server-api:
     container_name: "port_domain_service"
     build:
-      context: ./serverApi
+      context: ./server
       dockerfile: ./Dockerfile
     ports:
       - 50051:50051
