@@ -6,10 +6,6 @@ require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/google/go-cmp v0.3.1 // indirect
 	github.com/gopherjs/gopherjs v0.0.0-20190915194858-d3ddacdb130f // indirect
-	github.com/kazak/grpcapi v1.0.0
-	github.com/kazak/grpcmanager v1.0.6
-	github.com/kazak/repository v1.0.6
-	github.com/kazak/restapi v1.0.2
 	github.com/kr/pretty v0.1.0 // indirect
 	github.com/smartystreets/assertions v1.0.1 // indirect
 	github.com/stretchr/testify v1.4.0 // indirect
