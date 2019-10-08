@@ -1,3 +1,5 @@
 .idea
 clientApi/ClientAPI
 serverApi/PortDomainService
+bin
+pkg
