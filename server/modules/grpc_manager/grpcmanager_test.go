@@ -3,7 +3,6 @@ package grpc
 import (
 	"context"
 	api "github.com/kazak/Golang/modules/grpcapi"
-	. "github.com/smartystreets/goconvey/convey"
 	"google.golang.org/grpc"
 	"testing"
 	"time"

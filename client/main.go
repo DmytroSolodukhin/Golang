@@ -1,31 +1,26 @@
 package main
 
 import (
-	api "github.com/kazak/Golang/modules/grpcapi"
-	restapi "github.com/kazak/Golang/modules/rest_api"
+	api "port/client/models/grpcapi"
+	restapi "port/client/models/rest_api"
 	"log"
 	"fmt"
-	"os"
+	"flag"
 	"google.golang.org/grpc"
 )
 
 const (
 	selfHost = ":9090"
-	sendAddressDefault = "localhost"
-	sendPort = ":50051"
+	sendAddressDefault = "localhost:50051"
 	envSendAddress = "SEND_ADDRESS"
 )
 
 func main() {
 	fmt.Println("Starting client!")
 
-	sendAddress := os.Getenv(envSendAddress)
-	if sendAddress == "" {
-		sendAddress = sendAddressDefault
-	}
-	sendAddress += sendPort
+	sendAddress := flag.String(envSendAddress, sendAddressDefault,"server host")
 
-	conn, err := grpc.Dial(sendAddress, grpc.WithInsecure())
+	conn, err := grpc.Dial(*sendAddress, grpc.WithInsecure())
 	if  err != nil {
 		log.Fatal(err)
 	}

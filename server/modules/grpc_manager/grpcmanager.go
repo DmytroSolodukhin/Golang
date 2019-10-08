@@ -2,7 +2,7 @@ package grpc
 
 import (
 	"context"
-	api "github.com/kazak/Golang/modules/grpcapi"
+	api "port/server/modules/grpcapi"
 	"log"
 	"net"
 

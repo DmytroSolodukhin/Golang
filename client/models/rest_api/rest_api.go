@@ -5,8 +5,8 @@ import (
 	"context"
 	"encoding/json"
 	"github.com/go-chi/chi"
-	portFactory "github.com/kazak/Golang/modules/port_factory"
-	api "github.com/kazak/Golang/modules/grpcapi"
+	portFactory "port/client/models/port_factory"
+	api "port/client/models/grpcapi"
 	"net/http"
 )
 

@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"bytes"
 	"encoding/json"
-	api "github.com/kazak/Golang/modules/grpcapi"
+	api "port/client/models/grpcapi"
 	"strings"
 )
 
