@@ -1,7 +1,7 @@
 package db_manager
 
 import (
-	api "github.com/kazak/grpcapi"
+	api "github.com/kazak/Golang/modules/grpcapi"
 	"testing"
 	. "github.com/smartystreets/goconvey/convey"
 )

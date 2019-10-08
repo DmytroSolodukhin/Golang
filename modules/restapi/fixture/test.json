@@ -1,6 +1,6 @@
 {
-  "TEST!": {
-    "name": "test!",
+  "TEST1": {
+    "name": "test1",
     "city": "test",
     "country": "test",
     "alias": [],
@@ -17,7 +17,7 @@
     "code": "52000"
   },
   "TEST2": {
-    "name": "test!",
+    "name": "test2",
     "city": "test",
     "country": "test",
     "alias": [],

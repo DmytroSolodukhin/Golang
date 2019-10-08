@@ -9,7 +9,7 @@ import (
 	"io"
 	"os"
 
-	api "github.com/kazak/grpcapi"
+	api "github.com/kazak/Golang/modules/grpcapi"
 	"google.golang.org/grpc"
 	"net/http"
 	"net/http/httptest"

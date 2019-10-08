@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"bytes"
 	"testing"
-	api "github.com/kazak/grpcapi"
+	api "github.com/kazak/Golang/modules/grpcapi"
 	. "github.com/smartystreets/goconvey/convey"
 )
 
