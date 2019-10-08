@@ -1,8 +1,8 @@
 package main
 
 import (
-	api "github.com/kazak/grpcapi"
-	restapi "github.com/kazak/modules/restapi"
+	api "github.com/kazak/Golang/modules/grpcapi"
+	restapi "github.com/kazak/Golang/modules/restapi"
 	"log"
 	"fmt"
 	"google.golang.org/grpc"
