@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	MongoDBHost = "mongodb://mongo:27017"
+	MongoDBHost = "mongodb://localhost:27017"//mongo
 	PortTOConnect = ":50051"
 	DbName = "portsdb"
 )
