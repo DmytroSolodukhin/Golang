@@ -1,8 +1,8 @@
 package main
 
 import (
-	db "github.com/kazak/Golang/modules/repository"
-	grpc "github.com/kazak/Golang/modules/grpcmanager"
+	db "github.com/kazak/Golang/modules/db_manager"
+	grpc "github.com/kazak/Golang/modules/grpc_manager"
 	"fmt"
 	"os"
 )
