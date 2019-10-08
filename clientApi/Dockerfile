@@ -4,5 +4,5 @@ WORKDIR /go/src
 COPY . /go/src
 RUN export GOPATH=/go/src
 RUN set -x
-RUN chmod +x /go/src/entrypoint.sh
-ENTRYPOINT ["/go/src/entrypoint.sh"]
+RUN go build /go/src/main.go
+ENTRYPOINT ["/go/src/main"]
