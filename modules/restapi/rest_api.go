@@ -6,8 +6,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/go-chi/chi"
-	"github.com/kazak/data"
-	api "github.com/kazak/grpcapi"
+	"github.com/kazak/Golang/modules/port_factory"
+	api "github.com/kazak/Golang/modules/grpcapi"
 	"net/http"
 )
 

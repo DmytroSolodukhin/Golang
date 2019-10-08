@@ -1,10 +1,10 @@
-package data
+package port_factory
 
 import (
 	"bufio"
 	"bytes"
 	"encoding/json"
-	api "github.com/kazak/grpcapi"
+	api "github.com/kazak/Golang/modules/grpcapi"
 	"strings"
 )
 
