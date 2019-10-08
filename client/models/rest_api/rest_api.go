@@ -23,14 +23,14 @@ type restRoute interface {
 }
 
 type restRout struct {
+	restRoute
 	grpcClient api.PortServiceClient
 }
 
 func (response *response) output(res http.ResponseWriter) {
 	res.Header().Set("Content-Type", "application/json")
 	res.WriteHeader(response.code)
-
-	res.Write([]byte(response.data))
+	_, _ = res.Write([]byte(response.data))
 }
 
 // Getting all ports. (static limit 100)

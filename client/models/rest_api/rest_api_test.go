@@ -42,7 +42,7 @@ func TestHttpApi(t *testing.T) {
 			defer file.Close()
 			body := &bytes.Buffer{}
 
-			io.Copy(body, file)
+			_, _ = io.Copy(body, file)
 
 			req, _ := http.NewRequest("POST", "/", body)
 			req.Header.Add("Content-Type", "multipart/form-data")
@@ -50,7 +50,6 @@ func TestHttpApi(t *testing.T) {
 
 			response := httptest.NewRecorder()
 			rest.post(response, req)
-			response.Body.String()
 		})
 
 		Convey("Get method  without id", func() {

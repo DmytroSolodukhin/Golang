@@ -31,7 +31,7 @@ func (rt repositoryTest ) Delete(PortID string) bool {
 func TestStartGRPCSsrver(t *testing.T)  {
 	mockRepo := &repositoryTest{}
 	go StartGRPCServer(":50052", mockRepo)
-	time.Sleep(60)
+	time.Sleep(60000)
 	Convey("gRPC server should be getting request corretly", t, func() {
 		conn, _ := grpc.Dial("50052", grpc.WithInsecure())
 		defer conn.Close()
