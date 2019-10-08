@@ -15,4 +15,13 @@ The services are written in the golang programming language and use the official
 
 2. Run `$ docker-compose up --build` 
 
-3. You can post file to localhost:9090
+### Endpoints
+* #### GET
+    to get all ports `GET: http://localhost:9090` (set to limit 100, todo make pagination)
+* #### GET by Id
+    `GET: http://localhost:9090/{id}` where `{id}` is port identification. Geting singl port
+* #### POST
+    Sending json file to save data: `POST: http://localhost:9090/` Add json file to form-data
+* #### DELETE
+    `DELETE: http://localhost:9090/{id}` where `{id}` is port identification. Removing port from db
+

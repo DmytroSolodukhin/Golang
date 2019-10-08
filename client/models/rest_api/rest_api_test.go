@@ -9,7 +9,7 @@ import (
 	"io"
 	"os"
 
-	api "github.com/kazak/Golang/modules/grpcapi"
+	api "port/client/models/grpcapi"
 	"google.golang.org/grpc"
 	"net/http"
 	"net/http/httptest"
@@ -34,7 +34,8 @@ func (s mockClient) Delete(ctx context.Context, in *api.Request, opts ...grpc.Ca
 
 func TestHttpApi(t *testing.T) {
 	Convey("REST API should be response corretly", t, func() {
-		grpcClient = &mockClient{}
+
+		rest := restRout{grpcClient: &mockClient{}}
 
 		Convey("Post method", func() {
 			file, _ := os.Open("./fixture/test.json")
@@ -48,7 +49,7 @@ func TestHttpApi(t *testing.T) {
 			req.Header.Add("Content-Length", strconv.Itoa(body.Len()))
 
 			response := httptest.NewRecorder()
-			post(response, req)
+			rest.post(response, req)
 			response.Body.String()
 		})
 
@@ -56,7 +57,7 @@ func TestHttpApi(t *testing.T) {
 			req, _ := http.NewRequest("GET", "/", nil)
 			response := httptest.NewRecorder()
 
-			getAll(response, req)
+			rest.getAll(response, req)
 			got := response.Body.String()
 			ports := []*api.Port{&api.Port{PortId: "test"}}
 			exp, _ := json.Marshal(ports)
@@ -69,7 +70,7 @@ func TestHttpApi(t *testing.T) {
 			req = req.WithContext(context.WithValue(req.Context(), chi.RouteCtxKey, rctx))
 			response := httptest.NewRecorder()
 
-			getByID(response, req)
+			rest.getByID(response, req)
 			got := response.Body.String()
 			So(got, ShouldResemble, "{\"port_id\":\"test\"}")
 		})
@@ -80,7 +81,7 @@ func TestHttpApi(t *testing.T) {
 			req = req.WithContext(context.WithValue(req.Context(), chi.RouteCtxKey, rctx))
 			response := httptest.NewRecorder()
 
-			remove(response, req)
+			rest.remove(response, req)
 			got := response.Body.String()
 			So(got, ShouldEqual, "true")
 		})

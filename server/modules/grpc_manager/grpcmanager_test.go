@@ -2,10 +2,11 @@ package grpc
 
 import (
 	"context"
-	api "github.com/kazak/Golang/modules/grpcapi"
+	api "port/server/modules/grpcapi"
 	"google.golang.org/grpc"
 	"testing"
 	"time"
+	. "github.com/smartystreets/goconvey/convey"
 )
 
 type repositoryTest struct {}

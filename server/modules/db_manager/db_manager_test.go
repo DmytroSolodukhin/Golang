@@ -1,18 +1,19 @@
 package db_manager
 
 import (
-	api "github.com/kazak/Golang/modules/grpcapi"
+	api "port/server/modules/grpcapi"
 	"testing"
+	. "github.com/smartystreets/goconvey/convey"
 )
 
 const (
-	MongoDBHost = "mongodb://localhost:27017"
-	DbName = "testPort"
+	MongoDBHostTest = "mongodb://localhost:27017"
+	DbNameTest = "testPort"
 )
 func TestDBIntegration(t *testing.T)  {
 
 	Convey("Mongo integrations test", t, func() {
-		repo := ConnectToDB(MongoDBHost, DbName)
+		repo := ConnectToDB(MongoDBHostTest, DbNameTest)
 
 		testObject1 := &api.Port{
 			PortId: "TEST1",

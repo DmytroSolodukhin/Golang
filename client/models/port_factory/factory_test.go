@@ -3,8 +3,9 @@ package port_factory
 import (
 	"bufio"
 	"bytes"
-	api "github.com/kazak/Golang/modules/grpcapi"
+	api "port/client/models/grpcapi"
 	"testing"
+	. "github.com/smartystreets/goconvey/convey"
 )
 
 // Test to parse request body

@@ -5,7 +5,6 @@ import (
 	restapi "port/client/models/rest_api"
 	"log"
 	"fmt"
-	"flag"
 	"google.golang.org/grpc"
 )
 
