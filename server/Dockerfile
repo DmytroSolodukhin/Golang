@@ -5,4 +5,4 @@ COPY . /go/src
 RUN export GOPATH=/go/src
 RUN set -x
 RUN go build /go/src/main.go
-CMD ["/go/src/main", "-db_address=mongo:27017"]
+ENTRYPOINT ["/go/src/main"]

@@ -11,16 +11,14 @@ import (
 
 const (
 	selfHost = ":9090"
-	sendAddressDefault = "localhost:50051"
-	envSendAddress = "SEND_ADDRESS"
+	sendAddress = "port_domain_service:50051"
 )
 
 func main() {
 	fmt.Println("Starting client!")
 
-	sendAddress := flag.String(envSendAddress, sendAddressDefault,"server host")
 
-	conn, err := grpc.Dial(*sendAddress, grpc.WithInsecure())
+	conn, err := grpc.Dial(sendAddress, grpc.WithInsecure())
 	if  err != nil {
 		log.Fatal(err)
 	}
